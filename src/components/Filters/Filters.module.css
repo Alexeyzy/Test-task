@@ -1,0 +1,118 @@
+.filters {
+  width: 360px;
+  padding: 24px;
+  background: #fff;
+}
+
+.block {
+  margin-bottom: 32px;
+}
+
+.label {
+  color: #8a8a89;
+  margin-bottom: 8px;
+  font-weight: 400;
+  font-style: Regular;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0%;
+}
+
+.input {
+  width: 100%;
+  padding: 14px;
+  border-radius: 10px;
+  border: 1px solid #dcdcdc;
+  font-size: 16px;
+  margin-bottom: 16px;
+  background-color: #dcdcdc;
+  color: #101828;
+}
+
+.title {
+  font-weight: 500;
+  font-style: Medium;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0%;
+  color: #8a8a89;
+  margin-bottom: 24px;
+}
+
+.subtitle {
+  font-weight: 600;
+  font-style: Semi Bold;
+  font-size: 20px;
+  line-height: 24px;
+  letter-spacing: 0%;
+  color: #101828;
+  margin-bottom: 24px;
+}
+
+/* GRID */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+/* CARD */
+.card {
+  position: relative;
+  height: 95px;
+  border: 1px solid #dcdcdc;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  color: #101828;
+  font-size: 14px;
+}
+
+  
+.fully{
+  text-align: center;
+}
+
+/* hide checkbox */
+.card input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* icon */
+.card img {
+  width: 32px;
+  height: 32px;
+}
+
+/* active */
+.card:has(input:checked) {
+  border-color: #e44848;
+}
+
+/* Search */
+.search {
+  background: #e44848;
+  color: #fff;
+  width: 166;
+  height: 56;
+
+  opacity: 1;
+  top: 816px;
+  left: 64px;
+  gap: 10px;
+  padding-top: 16px;
+  padding-right: 60px;
+  padding-bottom: 16px;
+  padding-left: 60px;
+  border-radius: 200px;
+}
+
+.search:hover {
+  background: #d63d3d;
+}

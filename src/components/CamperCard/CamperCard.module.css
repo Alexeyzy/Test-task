@@ -1,0 +1,30 @@
+.card {
+  display: flex;
+  gap: 24px;
+  border: 1px solid #eee;
+  border-radius: 16px;
+  padding: 24px;
+}
+
+.card img {
+  width: 300px;
+  border-radius: 12px;
+}
+
+.info {
+  flex: 1;
+}
+
+.price {
+  font-weight: 700;
+  margin: 8px 0;
+}
+
+.info button {
+  margin-top: 16px;
+  padding: 12px 24px;
+  background: #e44848;
+  color: white;
+  border: none;
+  border-radius: 12px;
+}

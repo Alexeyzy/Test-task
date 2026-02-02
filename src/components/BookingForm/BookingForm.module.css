@@ -1,0 +1,11 @@
+.form {
+  background: #fff;
+  padding: 24px;
+  border-radius: 12px;
+}
+.form button {
+  background: #e44848;
+  color: #fff;
+  border-radius: 24px;
+  padding: 8px;
+}

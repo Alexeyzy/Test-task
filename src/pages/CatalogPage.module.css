@@ -1,0 +1,12 @@
+.page {
+    display: flex;
+    gap: 64px;
+    margin: 0 auto;
+  }
+  
+  .results {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
