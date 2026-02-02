@@ -54,7 +54,7 @@ export default function CatalogPage() {
           campers.map(camper => (
             <CamperCard key={camper.id} camper={camper} />
           ))
-        )}
+        )} 
       </div>
     </section>
   );
