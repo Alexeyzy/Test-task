@@ -1,13 +1,17 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { fetchCampersApi, fetchCamperByIdApi } from "../../api/campersApi";
+import axios from "axios";
+
+axios.defaults.baseURL =
+  "https://66b1f8e....mockapi.io"; // БЕЗ camperS !!!
 
 export const fetchCampers = createAsyncThunk(
   "campers/fetchAll",
   async (_, thunkAPI) => {
     try {
-      return await fetchCampersApi();
-    } catch {
-      return thunkAPI.rejectWithValue("Fetch campers failed");
+      const { data } = await axios.get("/campers");
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
@@ -16,10 +20,10 @@ export const fetchCamperById = createAsyncThunk(
   "campers/fetchById",
   async (id, thunkAPI) => {
     try {
-      return await fetchCamperByIdApi(id);
-    } catch {
-      return thunkAPI.rejectWithValue("Fetch camper failed");
+      const { data } = await axios.get(`/campers/${id}`);
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
-

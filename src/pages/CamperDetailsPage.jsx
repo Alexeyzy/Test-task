@@ -1,25 +1,27 @@
 import { useEffect } from "react";
-import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
+
 import { fetchCamperById } from "../redux/campers/campersOps";
-import { selectFilteredCampers } from "../redux/campers/campersSelectors";
+import { selectCurrentCamper } from "../redux/campers/campersSelectors";
 import BookingForm from "../components/BookingForm/BookingForm";
 
 export default function CamperDetailsPage() {
-  const { id } = useParams();
   const dispatch = useDispatch();
-  const camper = useSelector(selectFilteredCampers);
+  const { id } = useParams();
+
+  const camper = useSelector(selectCurrentCamper);
 
   useEffect(() => {
     dispatch(fetchCamperById(id));
   }, [dispatch, id]);
 
-  if (!camper) return null;
+  if (!camper) return <p>Loading...</p>;
 
   return (
-    <>
-      <h2>{camper.name}</h2>
+    <section>
+      <h1>{camper.name}</h1>
       <BookingForm />
-    </>
+    </section>
   );
 }

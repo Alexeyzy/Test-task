@@ -1,8 +1,9 @@
-import { createAsyncThunk } from "@reduxjs/toolkit";
-
 export const selectCampers = state => state.campers.items;
+export const selectCurrentCamper = state => state.campers.current;
+export const selectIsLoading = state => state.campers.isLoading;
+export const selectError = state => state.campers.error;
 
-export const selectFilteredCampers = (state) => {
+export const selectFilteredCampers = state => {
   const { items } = state.campers;
   const { location, vehicleType, features } = state.filters;
 
@@ -16,7 +17,7 @@ export const selectFilteredCampers = (state) => {
 
     const byFeatures =
       features.length === 0 ||
-      features.every(f => camper[f]);
+      features.every(feature => camper[feature]);
 
     return byLocation && byVehicle && byFeatures;
   });

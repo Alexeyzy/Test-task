@@ -1,43 +1,43 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { fetchCampersApi, fetchCamperByIdApi } from '../../api/campersApi';
-
-export const getCampers = createAsyncThunk(
-  'campers/getAll',
-  async (_, { getState }) => {
-    const filters = getState().filters;
-    return await fetchCampersApi(filters);
-  }
-);
-
-export const getCamperDetails = createAsyncThunk(
-  'campers/getById',
-  async id => fetchCamperByIdApi(id)
-);
+import { createSlice } from "@reduxjs/toolkit";
+import { fetchCampers, fetchCamperById } from "./campersOps";
 
 const campersSlice = createSlice({
-  name: 'campers',
+  name: "campers",
   initialState: {
     items: [],
-    selected: null,
-    loading: false,
+    current: null,
+    isLoading: false,
+    error: null,
   },
-  reducers: {
-    resetCampers(state) {
-      state.items = [];
-    },
-  },
+  reducers: {},
   extraReducers: builder => {
     builder
-      .addCase(getCampers.pending, s => { s.loading = true; })
-      .addCase(getCampers.fulfilled, (s, a) => {
-        s.items = a.payload;
-        s.loading = false;
+      // fetch all
+      .addCase(fetchCampers.pending, state => {
+        state.isLoading = true;
       })
-      .addCase(getCamperDetails.fulfilled, (s, a) => {
-        s.selected = a.payload;
+      .addCase(fetchCampers.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.items = action.payload;
+      })
+      .addCase(fetchCampers.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
+      })
+
+      // fetch by id
+      .addCase(fetchCamperById.pending, state => {
+        state.isLoading = true;
+      })
+      .addCase(fetchCamperById.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.current = action.payload;
+      })
+      .addCase(fetchCamperById.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
       });
   },
 });
 
-export const { resetCampers } = campersSlice.actions;
-export default campersSlice.reducer;
+export const campersReducer = campersSlice.reducer;
